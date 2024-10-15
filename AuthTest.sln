@@ -4,6 +4,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.11.35222.181
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthTest", "AuthTest\AuthTest.csproj", "{4681A85A-96B2-4655-8013-3C4ED51E0363}"
+	ProjectSection(ProjectDependencies) = postProject
+		{38D1BA6D-DE8E-4B7C-9B4A-6572647FC447} = {38D1BA6D-DE8E-4B7C-9B4A-6572647FC447}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthTest.DAL", "AuthTest.DAL\AuthTest.DAL.csproj", "{38D1BA6D-DE8E-4B7C-9B4A-6572647FC447}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +20,10 @@ Global
 		{4681A85A-96B2-4655-8013-3C4ED51E0363}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4681A85A-96B2-4655-8013-3C4ED51E0363}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4681A85A-96B2-4655-8013-3C4ED51E0363}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38D1BA6D-DE8E-4B7C-9B4A-6572647FC447}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38D1BA6D-DE8E-4B7C-9B4A-6572647FC447}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38D1BA6D-DE8E-4B7C-9B4A-6572647FC447}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38D1BA6D-DE8E-4B7C-9B4A-6572647FC447}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
