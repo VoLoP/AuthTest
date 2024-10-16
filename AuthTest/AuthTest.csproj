@@ -17,4 +17,8 @@
     <Folder Include="wwwroot\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\AuthTest.DAL\AuthTest.DAL.csproj" />
+  </ItemGroup>
+
 </Project>

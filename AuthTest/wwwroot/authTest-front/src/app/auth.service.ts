@@ -1,29 +1,33 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:5001/api/auth';
+  private apiUrl = 'https://your-api-url/api/auth';
+  private token: string | null = null;
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient) {}
 
-  login(credentials: any) {
-    return this.http.post<any>(`${this.apiUrl}/login`, credentials)
-      .subscribe(response => {
-        localStorage.setItem('access_token', response.token);
-        this.router.navigate(['dashboard']);
-      });
+  login(username: string, password: string, rememberMe: boolean): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/login`, { username, password, rememberMe })
+      .pipe(tap(response => this.token = response.token));
   }
 
-  logout() {
-    localStorage.removeItem('access_token');
-    this.router.navigate(['login']);
+  refresh(token: string): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/refresh`, { token })
+      .pipe(tap(response => this.token = response.token));
   }
 
-  public get loggedIn(): boolean {
-    return localStorage.getItem('access_token') !== null;
+  logout(token: string): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/logout`, { token })
+      .pipe(tap(() => this.token = null));
+  }
+
+  getToken(): string | null {
+    return this.token;
   }
 }
